@@ -85,12 +85,15 @@ func connectionState(t *testing.T, serverCAPath, serverCertPath, serverKeyPath, 
 		addr := list.Addr().String()
 		conn, err := tls.Dial("tcp", addr, dialConf)
 		if err != nil {
-			t.Fatalf("err: %v", err)
+			panic(fmt.Errorf("err: %v", err))
 		}
 		defer conn.Close()
 
 		// Write ping
-		conn.Write([]byte("ping"))
+		_, err = conn.Write([]byte("ping"))
+		if err != nil {
+			panic(fmt.Errorf("err: %v", err))
+		}
 	}()
 
 	// Accept the connection on the server side.
@@ -936,12 +939,15 @@ func testConnState(t *testing.T, certPath, keyPath, rootCertPath string) tls.Con
 		addr := list.Addr().String()
 		conn, err := tls.Dial("tcp", addr, dialConf)
 		if err != nil {
-			t.Fatalf("err: %v", err)
+			panic(fmt.Errorf("err: %v", err))
 		}
 		defer conn.Close()
 
 		// Write ping
-		conn.Write([]byte("ping"))
+		_, err = conn.Write([]byte("ping"))
+		if err != nil {
+			panic(fmt.Errorf("err: %v", err))
+		}
 	}()
 
 	serverConn, err := list.Accept()
