@@ -14,10 +14,6 @@ import (
 	"github.com/mitchellh/mapstructure"
 )
 
-var (
-	testImagePull sync.Once
-)
-
 func TestBackend_config_connection(t *testing.T) {
 	var resp *logical.Response
 	var err error

@@ -40,7 +40,6 @@ import (
 
 var (
 	stepCount               = 0
-	serialUnderTest         string
 	parsedKeyUsageUnderTest int
 )
 

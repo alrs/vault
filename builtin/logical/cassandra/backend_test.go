@@ -6,7 +6,6 @@ import (
 	"log"
 	"os"
 	"strconv"
-	"sync"
 	"testing"
 
 	"github.com/gocql/gocql"
@@ -15,10 +14,6 @@ import (
 	"github.com/hashicorp/vault/sdk/logical"
 	"github.com/mitchellh/mapstructure"
 	"github.com/ory/dockertest"
-)
-
-var (
-	testImagePull sync.Once
 )
 
 func prepareCassandraTestContainer(t *testing.T) (func(), string, int) {
@@ -127,12 +122,6 @@ func TestBackend_roleCrud(t *testing.T) {
 			testAccStepReadRole(t, "test2", ""),
 		},
 	})
-}
-
-func testAccPreCheck(t *testing.T) {
-	if v := os.Getenv("CASSANDRA_HOST"); v == "" {
-		t.Fatal("CASSANDRA_HOST must be set for acceptance tests")
-	}
 }
 
 func testAccStepConfig(t *testing.T, hostname string) logicaltest.TestStep {

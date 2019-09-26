@@ -182,16 +182,3 @@ func testAccGroups(t *testing.T, group string, policies interface{}) logicaltest
 		},
 	}
 }
-
-func testAccLogin(t *testing.T, user, password string, keys []string) logicaltest.TestStep {
-	return logicaltest.TestStep{
-		Operation: logical.UpdateOperation,
-		Path:      "login/" + user,
-		Data: map[string]interface{}{
-			"password": password,
-		},
-		Unauthenticated: true,
-
-		Check: logicaltest.TestCheckAuth(keys),
-	}
-}
