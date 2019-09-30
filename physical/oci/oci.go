@@ -3,6 +3,7 @@ package oci
 
 import (
 	"bytes"
+	"context"
 	"errors"
 	"fmt"
 	"github.com/armon/go-metrics"
@@ -14,7 +15,6 @@ import (
 	"github.com/oracle/oci-go-sdk/common"
 	"github.com/oracle/oci-go-sdk/common/auth"
 	"github.com/oracle/oci-go-sdk/objectstorage"
-	"golang.org/x/net/context"
 	"io/ioutil"
 	"net/http"
 	"sort"
