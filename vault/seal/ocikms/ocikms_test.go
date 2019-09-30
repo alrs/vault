@@ -2,13 +2,13 @@
 package ocikms
 
 import (
+	"context"
 	"os"
 	"reflect"
 	"testing"
 
 	log "github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/vault/sdk/helper/logging"
-	"golang.org/x/net/context"
 )
 
 /*
